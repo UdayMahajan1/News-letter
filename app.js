@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express') ;
 
 const app = express() ;
@@ -25,7 +27,7 @@ app.post('/', (req,res)=>
     const lName = req.body.lName ;
     const email = req.body.email ;
     
-    const url = 'https://us21.api.mailchimp.com/3.0/lists/1096491142/members?skip_merge_validation=<true' ;
+    const url = process.env.URL ;
 
 // so in this particular project I needed to use the post request to retrieve the user 
 // entered data and send the data to the mailchimp server according to their 
@@ -52,7 +54,7 @@ app.post('/', (req,res)=>
     const options = {
         method: 'POST',
         headers: {
-            Authorization: 'Bearer '+ 'a15e6685dced5def618ee780f1426ffe8-us21'
+            Authorization: 'Bearer '+ process.env.AUTH_KEY
         }
     }
 
